@@ -4,11 +4,14 @@
   "description": "It is a personal and experimental project, don't use the codes in your product, only if you understand it well.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install-server": "npm install --prefix server",
+    "install-client": "npm install --prefix client",
+    "install": "npm run install-server && npm run install-client",
+    "server": "npm run watch --prefix server",
+    "client": "npm start --prefix client",
+    "watch": "npm run server & npm run client",
+    "test": "npm run test --prefix server && npm run test --prefix client"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "csv-parse": "^5.5.6"
-  }
+  "license": "ISC"
 }
