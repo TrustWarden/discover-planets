@@ -36,4 +36,15 @@ function addNewLaunch(launch) {
   );
 }
 
-module.exports = { getAllLaunches, getOneLaunch, addNewLaunch };
+function abortLaunch(launch) {
+  launch.success = false;
+  launch.upcoming = false;
+  return launch;
+}
+
+module.exports = {
+  getAllLaunches,
+  getOneLaunch,
+  addNewLaunch,
+  abortLaunch,
+};
