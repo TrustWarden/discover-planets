@@ -6,19 +6,6 @@ const planets = require("./planets.mongo");
 const DEFAULT_FLIGHT_NUMBER = 100;
 const SPACEX_DATA_URL = "https://api.spacexdata.com/v5/launches/query";
 
-const launch = {
-  flightNumber: 100, // flight_number
-  mission: "Kepler Exoplanet 1", // name
-  rocket: "Explorer 11", // rocket --need populate
-  target: "Kepler-442 b", // -
-  customers: ["NASA", "EXOLET"], // payloads.customers[String] --need populate
-  launchDate: new Date("May 24, 2031"), // date_local
-  upcoming: true, // upcoming
-  success: true, // success
-};
-
-saveLaunch(launch);
-
 async function populateLaunches() {
   console.log("Downloading launches data...");
 
@@ -80,14 +67,18 @@ async function loadLaunchesData() {
   }
 }
 
-async function getAllLaunches() {
-  return await launches.find(
-    {},
-    {
-      _id: 0,
-      __v: 0,
-    }
-  );
+async function getAllLaunches(skip, limit) {
+  return await launches
+    .find(
+      {},
+      {
+        _id: 0,
+        __v: 0,
+      }
+    )
+    .sort("flightNumber")
+    .skip(skip)
+    .limit(limit);
 }
 
 async function filterAndFindLaunch(filter) {
