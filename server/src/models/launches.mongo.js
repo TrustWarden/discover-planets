@@ -19,7 +19,6 @@ const launchesSchema = new mongoose.Schema({
   },
   traget: {
     type: String,
-    required: true,
   },
   customers: [String],
   upcoming: {

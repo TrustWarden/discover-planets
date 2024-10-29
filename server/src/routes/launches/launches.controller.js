@@ -11,7 +11,7 @@ async function httpGetAllLaunches(req, res) {
 
 async function httpGetOneLaunch(req, res) {
   const flightNumber = Number(req.params.id);
-  return res.status(200).json(await getOneLaunch(flightNumber));
+  return res.status(200).json(await getOneLaunchById(flightNumber));
 }
 
 async function httpAddNewLaunch(req, res) {
